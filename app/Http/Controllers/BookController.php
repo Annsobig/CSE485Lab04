@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
-use app\Models\Book;
+// use app\Models\Book;
 class BookController extends Controller
 {
     /**
@@ -11,7 +12,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
+        // Nếu bạn muốn sắp xếp theo ID giảm dần, thay 'title' bằng 'id':
+        $books = Book::orderBy('id', 'desc')->get();
+        //$books = Book::all();
         return view('books.index', compact('books'));
     }
 
